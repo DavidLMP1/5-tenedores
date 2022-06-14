@@ -1,10 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 
-export function UserGuestScreen() {
+export function LoginScreen() {
   return (
     <View>
-      <Text>UserGuestScreen</Text>
+      <Text>LoginScreen</Text>
     </View>
   )
 }
