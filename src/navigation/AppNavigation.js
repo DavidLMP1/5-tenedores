@@ -25,11 +25,6 @@ export function AppNavigation() {
         options={{ title: "Restaurants" }}
       />
       <Tab.Screen
-        name={screen.account.tab}
-        component={AccountStack}
-        options={{ title: "Account" }}
-      />
-      <Tab.Screen
         name={screen.favorites.tab}
         component={FavoritesStack}
         options={{ title: "Favorites" }}
@@ -43,6 +38,11 @@ export function AppNavigation() {
         name={screen.ranking.tab}
         component={RankingStack}
         options={{ title: "Ranking" }}
+      />
+      <Tab.Screen
+        name={screen.account.tab}
+        component={AccountStack}
+        options={{ title: "Account" }}
       />
     </Tab.Navigator>
   );

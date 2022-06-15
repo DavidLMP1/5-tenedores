@@ -1,22 +1,21 @@
 import React, { useState } from "react";
 import { View } from "react-native";
-import { Input, Icon, Button } from "react-native-elements";
+import { Icon, Button, Input } from "react-native-elements";
 import { useFormik } from "formik";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigation } from "@react-navigation/native";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Toast from "react-native-toast-message";
-import { initialValues, validationSchema } from "./RegisterForm.data";
-import { screen } from "../../../utils";
-import { styles } from "./RegisterForm.styles";
+import { useNavigation } from "@react-navigation/native";
+import { screen } from ".././../../utils";
+import { initialValues, validationSchema } from "./LoginForm.data";
+import { styles } from "./LoginForm.styles";
+import { async } from "@firebase/util";
 
-export function RegisterForm() {
+export function LoginForm() {
   const [showPassword, setshowPassword] = useState(false);
-
-  const showHiddenPassword = () => {
+  const navigation = useNavigation();
+  const hiddenPassword = () => {
     setshowPassword((prevState) => !prevState);
   };
-
-  const navigation = useNavigation();
 
   const formik = useFormik({
     initialValues: initialValues(),
@@ -25,7 +24,7 @@ export function RegisterForm() {
     onSubmit: async (formValue) => {
       try {
         const auth = getAuth();
-        await createUserWithEmailAndPassword(
+        await signInWithEmailAndPassword(
           auth,
           formValue.email,
           formValue.password
@@ -35,12 +34,12 @@ export function RegisterForm() {
         Toast.show({
           type: "error",
           position: "bottom",
-          text1: "Error al registraste, intentalo de nuevo",
+          text1: "Usuario o contraseña incorrecto",
         });
-        console.log(error);
       }
     },
   });
+
   return (
     <View style={styles.content}>
       <Input
@@ -61,29 +60,14 @@ export function RegisterForm() {
             type="material-community"
             name={showPassword ? "eye-off-outline" : "eye-outline"}
             iconStyle={styles.icon}
-            onPress={showHiddenPassword}
+            onPress={hiddenPassword}
           />
         }
         onChangeText={(text) => formik.setFieldValue("password", text)}
         errorMessage={formik.errors.password}
       />
-      <Input
-        placeholder="Confirmar contraseña"
-        containerStyle={styles.input}
-        secureTextEntry={showPassword ? false : true}
-        rightIcon={
-          <Icon
-            type="material-community"
-            name={showPassword ? "eye-off-outline" : "eye-outline"}
-            iconStyle={styles.icon}
-            onPress={showHiddenPassword}
-          />
-        }
-        onChangeText={(text) => formik.setFieldValue("repeatPassword", text)}
-        errorMessage={formik.errors.repeatPassword}
-      />
       <Button
-        title="Unirse"
+        title="Iniciar Sesión"
         containerStyle={styles.btnContainer}
         buttonStyle={styles.btn}
         onPress={formik.handleSubmit}
