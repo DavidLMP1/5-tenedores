@@ -8,8 +8,8 @@ import { styles } from "./InfoUser.styles";
 
 export function InfoUser(props) {
   const { setLoading, setloadingText } = props;
-  const { uid, photoURl, displayName, email } = getAuth().currentUser;
-  const [avatar, setavatar] = useState(photoURl);
+  const { uid, photoURL, displayName, email } = getAuth().currentUser;
+  const [avatar, setavatar] = useState(photoURL); 
 
   const changeAvatar = async () => {
     const result = await ImagePicker.launchImageLibraryAsync({
