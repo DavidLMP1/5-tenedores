@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import Toast from "react-native-toast-message";
 import { AppNavigation } from "./src/navigation/AppNavigation";
 import { initFirebase } from "./src/utils";
+import "react-native-get-random-values";
 
 LogBox.ignoreAllLogs();
 export default function App() {
@@ -12,7 +13,7 @@ export default function App() {
         <AppNavigation />
       </NavigationContainer>
 
-      <Toast/>
+      <Toast />
     </>
   );
 }
