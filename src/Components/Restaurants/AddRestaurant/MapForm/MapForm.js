@@ -37,8 +37,7 @@ export function MapForm(props) {
         latitudeDelta: 0.001,
         longitudeDelta: 0.001,
       });
-
-      console.log(location);
+      
     })();
   }, []);
 
