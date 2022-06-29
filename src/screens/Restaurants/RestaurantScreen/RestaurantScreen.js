@@ -15,6 +15,7 @@ import {
   Info,
   BtnReviewForm,
   Reviews,
+  BtnFavorite,
 } from "../../../Components/Restaurant";
 import { styles } from "./RestaurantScreen.styles";
 
@@ -43,6 +44,7 @@ export function RestaurantScreen(props) {
       <Info restaurant={restaurant} />
       <BtnReviewForm idRestaurant={route.params.id} />
       <Reviews idRestaurant={route.params.id} />
+      <BtnFavorite idRestaurant={route.params.id} />
     </ScrollView>
   );
 }
