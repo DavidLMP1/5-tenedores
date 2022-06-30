@@ -3,11 +3,11 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   text: {
     textAlign: "center",
-    color: "#00a680",
+    color: "darkred",
     padding: 20,
   },
   textClick: {
-    color: "#00a680",
+    color: "darkred",
     fontWeight: "bold",
   },
   content: {
@@ -16,11 +16,11 @@ export const styles = StyleSheet.create({
   btn: {
     backgroundColor: "transparent",
     borderWidth: 1,
-    borderColor: "#00a680",
+    borderColor: "darkred",
     borderRadius: 10,
   },
   btnText: {
-    color: "#00a680",
+    color: "darkred",
     fontWeight: "bold",
   },
   textSendReview: {

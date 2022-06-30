@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     width: "50%",
   },
   btnMapSave: {
-    backgroundColor: "#00a680",
+    backgroundColor: "darkred",
   },
   btnMapContainerCancel: {
     paddingLeft: 5,

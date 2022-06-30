@@ -32,7 +32,7 @@ export function Info(props) {
       <Map location={restaurant.location} name={restaurant.name} />
       {map(listInfo, (item, index) => (
         <ListItem key={index}>
-          <Icon type={item.iconType} name={item.iconName} color="#00a680" />
+          <Icon type={item.iconType} name={item.iconName} color="darkred" />
           <ListItem.Content>
             <ListItem.Title>{item.text}</ListItem.Title>
           </ListItem.Content>
