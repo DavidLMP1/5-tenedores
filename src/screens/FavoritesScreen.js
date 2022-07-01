@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import {
   getDoc,
@@ -21,7 +21,13 @@ import {
 export function FavoritesScreen() {
   const [hasLogged, setHasLogged] = useState(null);
   const [restaurants, setRestaurants] = useState(null);
-  const auth = getAuth();  
+  const auth = getAuth();
+  
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setHasLogged(user ? true : false);
+    });
+  }, []);
 
   useEffect(() => {
     const q = query(
@@ -42,12 +48,6 @@ export function FavoritesScreen() {
       }
 
       setRestaurants(restaurantArray);
-    });
-  }, []);
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      setHasLogged(user ? true : false);
     });
   }, []);
 
